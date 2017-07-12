@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>VUE02-component</title>
+</head>
+<body id="body">
+	<ul id="ul">
+		<todo-item v-for="todo in todos" v-bind:item="todo"></todo-item>
+	</ul>
+</body>
+<script src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+
+<script type="text/javascript">
+Vue.component('todo-item',{
+	props:['item'],
+	template:'<li>{{item}}</li>'
+})
+var app = new Vue({
+	el:'#ul',
+	data:{
+		todos:[
+		'起床',
+		'洗脸',
+		'吃饭'
+		],
+		message:'你好'
+	}
+});
+//vue实例也暴露了一些有用的属性和方法；这些属性和方法前都加上了$,是为了与代理data属性区分；
+console.log(app.$el,app.$data);
+app.$watch('message',function(newval,oldval){
+	alert('message被修改了');
+})
+</script>
+</html>

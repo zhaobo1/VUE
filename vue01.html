@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>VUE01-start</title>
+</head>
+<body>
+	<p>申明式渲染</p>	
+	<p>
+		vuejs的核心是允许使用简洁的模板语法声明式的将数据渲染到DOM中；
+	</p>
+
+	<div v-if="seen" class="app" v-bind:title="message">
+	<input type="" name="" v-model="message">
+		{{message}};
+		<ul>
+			<li v-for="animate in animates">
+				{{animate.name}}
+			</li>
+		</ul>
+		<span v-on:click="alerts">点我试试</span>
+	</div>
+</body>
+<script src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+
+<script type="text/javascript">
+var app = new Vue({
+	el:'.app',
+	data:{
+		message:'你好Vue.js',
+		seen:true,
+		animates:[
+			{name:'cat'},
+			{name:'dog'},
+			{name:'fash'}
+		]
+	},
+	methods:{
+		alerts:function(){
+			alert(1);
+		}
+	}
+})
+//vue.js和核心是允许使用简洁的模板语法申明的将数据渲染到DOM中；
+
+是一个拥有预定义选项的Vue实例；
+</script>
+
+
+
+</html>

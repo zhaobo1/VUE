@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VUE04-模板语法</title>
+</head>
+<body>
+	<div id="els">
+			<span v-bind:title="a">{{a}}</span><br>
+			<span v-once>{{a}}</span>
+			v-once指令只能进行一次插值，数据改变之后也不会更新DOM；
+
+			双花括号会将数据解析成为纯文本，而非纯的html；
+			为了输出真正的HTML 我们需要使用v-html指令；
+
+			双花括号不能再html的属性中使用，需要使用v-bind指令；
+	</div>
+</body>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+
+
+<script type="text/javascript">
+var vm = new Vue({
+	el:"#els",
+	data:{
+		a:'1'
+	}
+})
+</script>
+</html>

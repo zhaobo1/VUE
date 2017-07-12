@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VUE03-实例的生命周期</title>
+</head>
+<body>
+VUE实例被创建之前都要经历一系列的初始化过程；
+
+配置数据观测--->编译模板--->挂载实例到DOM--->数据改变时更新DOM；
+
+在这个过程中程序会调用一些生命周期钩子，这就给我们提供了执行自定义逻辑的机会；
+
+例如：created这个钩子会在实例创建之后被调用；
+
+还有其他的一些钩子还不同的阶段被调用；
+如mounted;updated;created;destroyed;
+组件的自定义逻辑都分布在这些钩子上；
+<div id="m"></div>
+	
+</body>
+<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+
+<script type="text/javascript">
+var vm = new Vue({
+	el:"#m",
+	data:{
+		a:'1'
+	},
+	created:function(){
+		console.log(' a is '+this.a);
+	}
+	mounted:function(){
+		console.log('mounted')
+	},
+	updated:function(){
+		console.log('updated')
+	},
+	destroyed:function(){
+		console.log('destroyed')
+	}
+})
+</script>
+</html>
