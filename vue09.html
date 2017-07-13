@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VUE09-条件渲染</title>
+</head>
+<body>
+	<div id="vm">
+		<p v-if="ok">YES</p>
+		<p v-else>NO</p>
+		<template v-if="ok">
+			<h1>你好</h1>
+			<h2>他好</h2>
+		</template>
+		
+		如果不想复用就加一个唯一的key值；
+		<template v-if="logintype==='username'">
+			<label>username</label>
+			<input type="" placeholder="请输入用户名" name="" key="username-input">
+		</template>
+		<template v-else>
+			<label>email</label>
+			<input type="" placeholder="请输入邮箱地址" name="" key="email-input">
+		</template>
+		<button v-on:click="changetype">changeLogintype</button>
+		<hr>
+		v-for的使用
+		<ul>
+			<li v-for="(animale,index) in animales">
+				名字：{{animale.name}}，年龄:{{animale.age}}, 索引{{index}}
+			</li>
+		</ul>
+	</div>
+</body>
+<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+<script type="text/javascript">
+var vm = new Vue({
+	el:"#vm",
+	data:{
+		ok:true,
+		logintype:'username',
+		animales:[
+			{name:'cat',age:'2'},
+			{name:'dog',age:'3'},
+			{name:'pig',age:'1'}
+		]
+	},
+	methods:{
+		changetype:function(){
+			if(this.logintype==='username')
+			{
+				this.logintype = 'email'
+			}else{
+				this.logintype = 'username'
+			}
+		}
+	}
+})
+</script>
+</html>

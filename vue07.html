@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VUE07-计算属性</title>
+</head>
+<body>
+	模板中的表达式是非常便利的，但是它只能进行一些简单的运算；
+	在模板中放入太多逻辑会使模板过重并且难以维护；
+	对于任何复杂逻辑都应该使用计算属性；
+	<p id="computed">
+		<span>{{message}}</span><br>
+		<span>{{reversedMessageC}}</span><br>
+		<span>{{reversedMessage()}}</span>
+	</p>
+	计算属性和绑定方法的区别；computed 和methods;
+	上面这个实例是可以通过methods方式达到的;但是它们之间是有区别的；
+	1：是否缓存；计算属性是基于它们之间的依赖进行缓存的；只有改变了才回去计算；
+	2：而methods只要从新渲染就会调用函数；
+
+	<hr>
+	computed和watch比较
+
+	computed默认只有getter没有setter;但是也是可以允许我们定义的；
+	例如：
+
+	<div class="computed2">
+		{{fullname}}
+	</div>	
+</body>
+<script src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+<script type="text/javascript">
+var vm = new Vue({
+	el:"#computed",	
+	data:{
+		message:'测试computed'
+	},
+	computed:{
+		reversedMessageC:function(){
+			return this.message.split('').reverse().join('');
+		}
+	},
+	methods:{
+		reversedMessage:function(){
+			return this.message.split('').reverse().join('');
+		}
+	}
+});
+var vm2 = new Vue({
+	el:'.computed2',
+	data:{
+		firstname:'赵',
+		lastname:'波'
+	},
+	computed:{
+		fullname:{
+			get:function(){
+				return this.firstname+' '+this.lastname;
+			},
+			set:function(newname){
+				var name = newname;
+				this.firstname = name.split(' ')[0];
+				this.lastname = name.split(' ')[1];
+			}
+		}
+	}
+
+
+
+
+
+})
+</script>
+</html>

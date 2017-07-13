@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VUE08-class与style的绑定</title>
+	<style type="text/css">
+		.active{
+			color: blue;
+		}
+		.err{
+			font-size: 18px
+		}
+	</style>
+</head>
+<body>
+	在 v-bind 用于 class 和 style 时， 
+	Vue.js 专门增强了它。表达式的结果类型除了字符串之外，还可以是对象或数组。
+	<div id="test">
+
+		<span v-bind:class='{active:isActive,err:isErr}'>高亮</span><br>
+		<span v-bind:class='classobj'>直接绑定数据中的对象</span><br>
+		<span v-bind:class='[activeClass,errClass]'>数组语法</span>
+	</div>
+</body>
+<script src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+<script type="text/javascript">
+var vm = new Vue({
+	el:'#test',
+	data:{
+		isActive:true,
+		isErr:true,
+		activeClass:'active',
+		errClass:'err',
+		classobj:{
+			active:true,
+			err:true
+		}
+	}
+})
+</script>
+</html>
