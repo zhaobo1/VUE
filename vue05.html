@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VUE05-使用JavaScript表达式</title>
+</head>
+<body>
+	在双花括号中是可以是用JavaScript表达式的；
+	但是每个绑定都只能是单个表达式；
+	例如：
+	<p id="sil">
+		{{message + 1}}
+		<span>
+		{{ok? 'YES' : 'NO'}}
+		</span>
+		<span>
+			{{new Date()}}
+			模板表达式都是放在沙盒中，只能访问全局变量的白名单，
+			不能访问到用用户定义的全局变量
+		</span>
+	</p>
+
+	<hr>
+	指令;v-bind;v-for;v-if;指令的预期值是单一的JavaScript表达式；它的作用就是
+	当表达式的值改变时，反应到DOM上；例如
+	<span v-if="sea">见与不见</span>
+
+	一些指令可以接受一些参数；如v-bind:title="message";v-on:click="do"
+
+	
+</body>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+<script type="text/javascript">
+var vm = new Vue({
+	el:'#sil',
+	data:{
+		message:3,
+		ok:false
+	}
+})
+
+</script>
+</html>
